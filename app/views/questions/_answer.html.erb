@@ -1,0 +1,15 @@
+<div class="answer">
+  <div class="userDetail">
+    <%= answer.user.email %>
+    <br>
+    <%= answer.content %>
+    <br>
+     <%if can? :update,answer%>
+    <%= link_to 'Edit', answer %>
+    <% end %>.
+    <%if can? :destroy,answer%>
+    <%= link_to "Delete", answer, method: :delete, data: {confirm: "Are you sure?"}%>
+    <% end %>
+<%= link_to 'Show', answer ,params[id: answer.id]%>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="createQuestion">
+  <%= form_for @question, remote: true do |task|%>
+      <%= task.label :title %><br>
+      <%= task.text_area :title %><br>
+      <%= task.label :content %><br>
+      <%= task.text_area :content %><br>
+      <div class="actions">
+        <%= task.submit id: 'create_question_submit' %>
+      </div>
+      <% end %>
+      <% if @question.errors.any? %>
+        <% @question.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
+      <% end %>
+</div>
+<div id="questions">
+  <% @feed.each do |question| %>
+  <%= render 'question' , question: question %>
+  <% end %>
+</div>

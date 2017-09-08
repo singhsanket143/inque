@@ -1,0 +1,14 @@
+<div class="question">
+  <div class="userDetail">
+    <%= question.user.email %>
+    <br>
+    <%= question.title %>
+    <%= question.content %>
+    <br>
+    <%if can? :destroy,question%>
+
+    <%= link_to "Delete", question, method: :delete, data: {confirm: "Are you sure?"}%>
+    <%end%>
+    <%= link_to 'Show', question ,params[id: question.id]%>
+  </div>
+</div>

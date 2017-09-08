@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @answer.content %>
+</p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @answer.question.title %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @answer.user.email %>
+</p>
+<%if can? :update,@answer%>
+<%= link_to 'Edit', edit_answer_path(@answer) %> |
+<%end%>
+<%= link_to 'Back', question_path(@answer.question) %>
+
+
+<div class="createComment">
+   <%= form_for @comment, :url => comments_path(answer_id:@answer.id), remote: true do |task|%>
+      <%= task.label :content %><br>
+      <%= task.text_area :content %><br>
+      <div class="actions">
+        <%= task.submit id: 'create_comment_submit'%>
+      </div>
+      <% end %>
+      <% if @comment.errors.any? %>
+      <% @comment.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
+      <% end %>
+</div>
+
+<div id="comments">
+  <% @commentfeed.each do |comment| %>
+  <%= render 'comment' , comment: comment %>
+
+  <% end %>
+</div>
