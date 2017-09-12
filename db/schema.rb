@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170908095052) do
+ActiveRecord::Schema.define(version: 20170912203252) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -68,6 +68,12 @@ ActiveRecord::Schema.define(version: 20170908095052) do
   add_index "comments", ["answer_id"], name: "index_comments_on_answer_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
+  create_table "maintrends", force: :cascade do |t|
+    t.string   "trendtitle", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "questions", force: :cascade do |t|
     t.string   "title",      null: false
     t.text     "content",    null: false
@@ -77,6 +83,15 @@ ActiveRecord::Schema.define(version: 20170908095052) do
   end
 
   add_index "questions", ["user_id"], name: "index_questions_on_user_id"
+
+  create_table "subtrends", force: :cascade do |t|
+    t.string   "subtitle",     null: false
+    t.integer  "maintrend_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "subtrends", ["maintrend_id"], name: "index_subtrends_on_maintrend_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -97,6 +112,7 @@ ActiveRecord::Schema.define(version: 20170908095052) do
     t.datetime "updated_at",                          null: false
     t.integer  "role"
     t.string   "name"
+    t.string   "phone"
     t.string   "phoneno"
   end
 
