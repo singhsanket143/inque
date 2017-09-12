@@ -12,6 +12,7 @@
         <li><%= link_to "Logout", destroy_user_session_path ,method: :delete,:id=>"custom"%></strong></li>
     <%end%>
   </nav>
+
   <% if notice %>
     <script type="text/javascript">
         noty({text: '<%= notice %>', type: 'alert', timeout: 3500, progressBar: true});
