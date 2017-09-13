@@ -276,5 +276,5 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   #Add your ID and secret here
   #ID first, secret second
-  config.omniauth :facebook, "1418875898219722", "e99f986e94dcffd3d5d07ca"
+  config.omniauth :facebook, "1418875898219722", "e99f986e94dcffd3d5d07caa9a34b8eb", scope: 'email,public_profile,user_friends',info_fields: 'email,name'
 end
