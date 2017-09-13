@@ -112,7 +112,6 @@ ActiveRecord::Schema.define(version: 20170912203252) do
     t.datetime "updated_at",                          null: false
     t.integer  "role"
     t.string   "name"
-    t.string   "phone"
     t.string   "phoneno"
   end
 
